@@ -1,0 +1,11 @@
+@font-face {
+    font-family: "FeatherBold";
+    src: url("/Fonts/FH.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  .FH {
+    font-family: "FeatherBold";
+  }
+  

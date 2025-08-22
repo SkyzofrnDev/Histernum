@@ -1,0 +1,47 @@
+{
+    "section": "Hindu-Buddha",
+    "levels": [
+      {
+        "levelId": 1,
+        "title": "Kerajaan Kutai",
+        "questions": [
+          {
+            "type": "mcq",
+            "question": "Siapa raja pertama Kerajaan Kutai?",
+            "options": ["Mulawarman", "Airlangga", "Hayam Wuruk"],
+            "answer": "Mulawarman"
+          },
+          {
+            "type": "audio-choice",
+            "audio": "/audio/kutai1.mp3",
+            "question": "Siapa raja yang disebutkan di audio?",
+            "options": ["Mulawarman", "Airlangga", "Ken Arok"],
+            "answer": "Mulawarman"
+          },
+          {
+            "type": "arrange",
+            "question": "Urutkan peristiwa di bawah ini dari awal hingga akhir.",
+            "items": [
+              "Mulawarman naik tahta",
+              "Pembuatan prasasti Yupa",
+              "Perluasan wilayah"
+            ],
+            "answer": [
+              "Mulawarman naik tahta",
+              "Pembuatan prasasti Yupa",
+              "Perluasan wilayah"
+            ]
+          },
+          {
+            "type": "match",
+            "question": "Cocokkan kerajaan dengan lokasinya.",
+            "pairs": [
+              { "left": "Kutai", "right": "Kalimantan Timur" },
+              { "left": "Sriwijaya", "right": "Sumatera Selatan" }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+  
