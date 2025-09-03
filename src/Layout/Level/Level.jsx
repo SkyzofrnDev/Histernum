@@ -1,8 +1,18 @@
 import React from "react";
 import { ButtonLevel } from "../../Components/Index";
 import BTMaterial from "../../Components/Button/BTMaterial";
-const level = true;
-
+const levels = [
+  { id: 1, title: "Level 1" },
+  { id: 2, title: "Level 2" },
+  { id: 3, title: "Level 3" },
+  { id: 4, title: "Level 4" },
+  { id: 5, title: "Level 5" },
+  { id: 6, title: "Level 6" },
+  { id: 7, title: "Level 7" },
+  { id: 8, title: "Level 8" },
+  { id: 9, title: "Level 8" },
+  { id: 10, title: "Level 8" },
+];
 
 const Level = () => {
   return (
@@ -35,7 +45,38 @@ const Level = () => {
         </p>
         <div className="w-full border-white/20 border-t-2 rounded-full"></div>
       </div>
-      <ButtonLevel />
+      <div className="flex flex-col items-center gap-6 mt-10">
+        
+        <div className="flex flex-col items-center gap-16 mt-10">
+          {levels.map((level, index) => {
+            const group = Math.floor(index / 3);
+            const direction = group % 2 === 0 ? "right" : "left";
+            const posInGroup = index % 3;
+            let translateClass = "";
+            if (direction === "right") {
+              if (posInGroup === 0) translateClass = "translate-x-12";
+              if (posInGroup === 1) translateClass = "translate-x-24";
+              if (posInGroup === 2) translateClass = "translate-x-12";
+            } else {
+              if (posInGroup === 0) translateClass = "-translate-x-12";
+              if (posInGroup === 1) translateClass = "-translate-x-24";
+              if (posInGroup === 2) translateClass = "-translate-x-12";
+            }
+
+            const rotateClasses = ["rotate-2", "-rotate-1", "rotate-1"];
+            const rotateClass = rotateClasses[posInGroup];
+
+            return (
+              <div
+                key={level.id}
+                className={`${translateClass} ${rotateClass} transition-transform duration-300`}
+              >
+                <ButtonLevel>{level.title}</ButtonLevel>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </div>
   );
 };

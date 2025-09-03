@@ -11,6 +11,7 @@ import {
 } from "./Pages/Index";
 import "./App.css";
 import { Level } from "./Layout/Index";
+import Test from "./Pages/Test/Test";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
       <Route path="/lesson/:id" element={<Lesson />} />
       <Route path="/quiz/:id" element={<Quiz />} />
       <Route path="/result" element={<Result />} />
+      <Route path="/test" element={<Test />} />
     </Routes>
   );
 };
