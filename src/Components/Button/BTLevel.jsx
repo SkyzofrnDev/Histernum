@@ -7,8 +7,8 @@ const BTLevel = ({
   level = false,
   showMessageEnabled = false,
   showPopUpEnabled = false,
-  isOpen = false, 
-  onToggle = () => {}, 
+  isOpen = false,
+  onToggle = () => {},
   titlelevel,
   desclevel,
   lesson,
@@ -35,6 +35,25 @@ const BTLevel = ({
         </AnimatePresence>
       )}
 
+      {/* POPUP */}
+
+      <div className="absolute top-24 -left-10 popup-ket z-50 w-96">
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              key="popup"
+              initial={{ scaleY: 1, opacity: 0, originY: 0 }}
+              animate={{ scaleY: 1, opacity: 1, originY: 1 }}
+              exit={{ scaleY: 1, opacity: 0, originY: 2 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+              className="w-fit"
+            >
+              <PopUp desc={desclevel} title={titlelevel} to={lesson} />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+      
       {/* BUTTON */}
       <button
         onClick={() => {
@@ -65,7 +84,7 @@ const BTLevel = ({
           </svg>
         )}
         <svg
-          className="w-8 h-8 relative z-10 pointer-events-none"
+          className="w-8 h-8 relative pointer-events-none"
           viewBox="0 0 42 34"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
@@ -90,25 +109,6 @@ const BTLevel = ({
           </defs>
         </svg>
       </button>
-
-      {/* POPUP */}
-      {showPopUpEnabled && (
-        <div className="absolute top-24 -left-10 popup-ket w-96 z-[1000]">
-          <AnimatePresence>
-            {isOpen && ( // pakai props
-              <motion.div
-                key="popup"
-                initial={{ scaleY: 1, opacity: 0, originY: 0 }}
-                animate={{ scaleY: 1, opacity: 1, originY: 1 }}
-                exit={{ scaleY: 1, opacity: 0, originY: 2 }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-              >
-                <PopUp desc={desclevel} title={titlelevel} to={lesson} />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
-      )}
     </div>
   );
 };

@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Questions = () => {
   return (
-    <div className="w-full h-screen flex flex-col bg-[#131f24]">
+    <div className="w-full select-none h-screen flex flex-col bg-[#131f24]">
       <div className="flex items-center  gap-4 text-[#ed4140] font-semibold just text-2xl">
         <Link to={"/"}>
           <img

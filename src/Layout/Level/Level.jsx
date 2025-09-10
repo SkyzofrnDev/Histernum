@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import BTLevel from "../../Components/Button/BTLevel";
 import dataLevel from "../../Data/Level.json";
+import BTMaterial from "../../Components/Button/BTMaterial";
 
 const Level = () => {
-  const [openPopupId, setOpenPopupId] = useState(null); // <-- pindah ke dalam
+  const [openPopupId, setOpenPopupId] = useState(null);
 
   return (
     <div className="pt-10 px-20 flex flex-col min-h-[1000vh] items-center w-full">
@@ -24,6 +25,7 @@ const Level = () => {
                   </div>
                   <p className="font-bold text-xl mt-2">{section.title}</p>
                 </div>
+                <BTMaterial />
               </div>
             </div>
           </div>
@@ -68,9 +70,9 @@ const Level = () => {
                 >
                   <BTLevel
                     level={item.unlocked}
-                    showMessageEnabled={isLastUnlocked}
+                    showMessageEnabled={isLastUnlocked && openPopupId === null}
                     showPopUpEnabled={true}
-                    isOpen={openPopupId === item.id} // hanya terbuka jika id sama
+                    isOpen={openPopupId === item.id}
                     onToggle={() =>
                       setOpenPopupId(openPopupId === item.id ? null : item.id)
                     }
