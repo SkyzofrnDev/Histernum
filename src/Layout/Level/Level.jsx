@@ -3,15 +3,6 @@ import { ButtonLevel } from "../../Components/Index";
 import BTMaterial from "../../Components/Button/BTMaterial";
 const levels = [
   { id: 1, title: "Level 1" },
-  { id: 2, title: "Level 2" },
-  { id: 3, title: "Level 3" },
-  { id: 4, title: "Level 4" },
-  { id: 5, title: "Level 5" },
-  { id: 6, title: "Level 6" },
-  { id: 7, title: "Level 7" },
-  { id: 8, title: "Level 8" },
-  { id: 9, title: "Level 8" },
-  { id: 10, title: "Level 8" },
 ];
 
 const Level = () => {
@@ -63,13 +54,11 @@ const Level = () => {
               if (posInGroup === 2) translateClass = "-translate-x-12";
             }
 
-            const rotateClasses = ["rotate-2", "-rotate-1", "rotate-1"];
-            const rotateClass = rotateClasses[posInGroup];
 
             return (
               <div
                 key={level.id}
-                className={`${translateClass} ${rotateClass} transition-transform duration-300`}
+                className={`${translateClass} transition-transform duration-300`}
               >
                 <ButtonLevel>{level.title}</ButtonLevel>
               </div>

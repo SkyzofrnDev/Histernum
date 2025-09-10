@@ -1,0 +1,56 @@
+[
+    {
+      "id": 1,
+      "title": "Masuknya Hindu Budha Di Indonesia",
+      "description": "Sejarah Awal Negara Republik Indonesia",
+      "levels": [
+        {
+          "id": 1,
+          "unlocked": true,
+          "title": "Hindu Budha Di Nusantara",
+          "description": "lorem ipsum...",
+          "questions": [
+            {
+              "id": 1,
+              "type": "multiple-choice",
+              "prompt": "Apa bahasa Inggris dari 'apel'?",
+              "options": ["Apple", "Orange", "Banana", "Grape"],
+              "answer": "Apple"
+            },
+            {
+              "id": 2,
+              "type": "input",
+              "prompt": "Tuliskan bahasa Indonesia dari 'Dog'.",
+              "answer": "anjing"
+            },
+            {
+              "id": 3,
+              "type": "image-choice",
+              "prompt": "Pilih gambar yang menunjukkan 'Cat'.",
+              "options": [
+                { "label": "Dog", "image": "/images/dog.png" },
+                { "label": "Cat", "image": "/images/cat.png" },
+                { "label": "Bird", "image": "/images/bird.png" }
+              ],
+              "answer": "Cat"
+            },
+            {
+              "id": 4,
+              "type": "arrange",
+              "prompt": "Susun kata berikut menjadi kalimat yang benar: 'I - am - student - a'",
+              "options": ["I", "am", "a", "student"],
+              "answer": ["I", "am", "a", "student"]
+            },
+            {
+              "id": 5,
+              "type": "multiple-choice",
+              "prompt": "Apa bahasa Indonesia dari 'Red'?",
+              "options": ["Merah", "Biru", "Hijau", "Kuning"],
+              "answer": "Merah"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+      
