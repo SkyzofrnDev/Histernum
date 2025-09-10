@@ -3,34 +3,42 @@ import { Message } from "../Index";
 import { motion, AnimatePresence } from "framer-motion";
 import PopUp from "../PopUp/PopUp";
 
-const level = true;
-
-
-const BTLevel = () => {
-  const [showMessage, setShowMessage] = useState(true);
-  const [showPopUp, setshowPopUp] = useState(false);
+const BTLevel = ({
+  level = false,              
+  showMessageEnabled = true,
+  showPopUpEnabled = false ,
+  titlelevel,
+  desclevel,
+  lesson,
+}) => {
+  const [showMessage, setShowMessage] = useState(showMessageEnabled);
+  const [showPopUp, setShowPopUp] = useState(false);
 
   return (
     <div className="flex flex-col items-center justify-center relative">
-      <AnimatePresence>
-        {showMessage && (
-          <motion.div
-            key="message"
-            className="absolute bottom-16 z-50"
-            initial={{ scaleY: 0, opacity: 0, originY: 1 }} // mulai dari bawah
-            animate={{ scaleY: 1, opacity: 1, originY: 1 }} // expand ke atas
-            exit={{ scaleY: 0, opacity: 0, originY: 1 }} // shrink ke bawah
-            transition={{ duration: 0.3, ease: "easeInOut" }}
-          >
-            <Message />
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* MESSAGE */}
+      {showMessageEnabled && (
+        <AnimatePresence>
+          {showMessage && (
+            <motion.div
+              key="message"
+              className="absolute bottom-16 z-50"
+              initial={{ scaleY: 0, opacity: 0, originY: 1 }}
+              animate={{ scaleY: 1, opacity: 1, originY: 1 }}
+              exit={{ scaleY: 0, opacity: 0, originY: 1 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              <Message />
+            </motion.div>
+          )}
+        </AnimatePresence>
+      )}
 
+      {/* BUTTON */}
       <button
         onClick={() => {
-          setshowPopUp((prev) => !prev);
-          setShowMessage((prev) => !prev);
+          if (showPopUpEnabled) setShowPopUp((prev) => !prev);
+          if (showMessageEnabled) setShowMessage((prev) => !prev);
         }}
         className={`relative inline-flex items-center justify-center w-[70px] h-[65px] rounded-full ${
           level
@@ -81,25 +89,28 @@ const BTLevel = () => {
           </defs>
         </svg>
       </button>
-      <div className="absolute z-10 top-24 -left-10">
-        <AnimatePresence>
-          {showPopUp && (
-            <motion.div
-              key="popup"
-              initial={{ scaleY: 1, opacity: 0, originY: 0 }}
-              animate={{ scaleY: 1, opacity: 1, originY: 1 }}
-              exit={{ scaleY: 1, opacity: 0, originY: 2 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-            >
-              <PopUp
-                desc={"Jembutt"}
-                title={"Memekkksjhadgajhasghgasjh"}
-                to={"/login"}
-              />
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+
+      {showPopUpEnabled && (
+        <div className="absolute top-24 -left-10 popup-ket w-96 z-50">
+          <AnimatePresence>
+            {showPopUp && (
+              <motion.div
+                key="popup"
+                initial={{ scaleY: 1, opacity: 0, originY: 0 }}
+                animate={{ scaleY: 1, opacity: 1, originY: 1 }}
+                exit={{ scaleY: 1, opacity: 0, originY: 2 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <PopUp
+                  desc={desclevel}
+                  title={titlelevel}
+                  to={lesson}
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
+      )}
     </div>
   );
 };

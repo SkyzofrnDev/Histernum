@@ -1,56 +1,239 @@
 [
-    {
-      "id": 1,
-      "title": "Masuknya Hindu Budha Di Indonesia",
-      "description": "Sejarah Awal Negara Republik Indonesia",
-      "levels": [
-        {
-          "id": 1,
-          "unlocked": true,
-          "title": "Hindu Budha Di Nusantara",
-          "description": "lorem ipsum...",
-          "questions": [
-            {
-              "id": 1,
-              "type": "multiple-choice",
-              "prompt": "Apa bahasa Inggris dari 'apel'?",
-              "options": ["Apple", "Orange", "Banana", "Grape"],
-              "answer": "Apple"
-            },
-            {
-              "id": 2,
-              "type": "input",
-              "prompt": "Tuliskan bahasa Indonesia dari 'Dog'.",
-              "answer": "anjing"
-            },
-            {
-              "id": 3,
-              "type": "image-choice",
-              "prompt": "Pilih gambar yang menunjukkan 'Cat'.",
-              "options": [
-                { "label": "Dog", "image": "/images/dog.png" },
-                { "label": "Cat", "image": "/images/cat.png" },
-                { "label": "Bird", "image": "/images/bird.png" }
-              ],
-              "answer": "Cat"
-            },
-            {
-              "id": 4,
-              "type": "arrange",
-              "prompt": "Susun kata berikut menjadi kalimat yang benar: 'I - am - student - a'",
-              "options": ["I", "am", "a", "student"],
-              "answer": ["I", "am", "a", "student"]
-            },
-            {
-              "id": 5,
-              "type": "multiple-choice",
-              "prompt": "Apa bahasa Indonesia dari 'Red'?",
-              "options": ["Merah", "Biru", "Hijau", "Kuning"],
-              "answer": "Merah"
-            }
-          ]
-        }
-      ]
-    }
-  ]
-      
+  {
+    "id": 1,
+    "title": "Masuknya Hindu Budha Di Indonesia",
+    "description": "Sejarah Awal Negara Republik Indonesia",
+    "levels": [
+      {
+        "id": 1,
+        "unlocked": true,
+        "title": "Level 1: Hindu Budha Di Nusantara",
+        "description": "Belajar dasar sejarah Hindu Budha.",
+        "questions": [
+          {
+            "id": 1,
+            "type": "multiple-choice",
+            "prompt": "Apa bahasa Inggris dari 'buku'?",
+            "options": ["Book", "Table", "Chair", "Pen"],
+            "answer": "Book"
+          },
+          {
+            "id": 2,
+            "type": "input",
+            "prompt": "Tuliskan bahasa Indonesia dari 'Sun'.",
+            "answer": "matahari"
+          },
+          {
+            "id": 3,
+            "type": "image-choice",
+            "prompt": "Pilih gambar yang menunjukkan 'Dog'.",
+            "options": [
+              { "label": "Dog", "image": "/images/dog.png" },
+              { "label": "Cat", "image": "/images/cat.png" },
+              { "label": "Bird", "image": "/images/bird.png" }
+            ],
+            "answer": "Dog"
+          },
+          {
+            "id": 4,
+            "type": "arrange",
+            "prompt": "Susun kata berikut menjadi kalimat yang benar: 'This - a - pen - is'",
+            "options": ["This", "is", "a", "pen"],
+            "answer": ["This", "is", "a", "pen"]
+          },
+          {
+            "id": 5,
+            "type": "multiple-choice",
+            "prompt": "Apa bahasa Indonesia dari 'Blue'?",
+            "options": ["Merah", "Kuning", "Biru", "Hijau"],
+            "answer": "Biru"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "unlocked": true,
+        "title": "Level 2: Kerajaan Kutai",
+        "description": "Mengenal kerajaan Hindu pertama di Indonesia.",
+        "questions": [
+          {
+            "id": 1,
+            "type": "multiple-choice",
+            "prompt": "Apa ibu kota Indonesia?",
+            "options": ["Jakarta", "Bandung", "Surabaya", "Medan"],
+            "answer": "Jakarta"
+          },
+          {
+            "id": 2,
+            "type": "input",
+            "prompt": "Tuliskan bahasa Inggris dari 'air'.",
+            "answer": "water"
+          },
+          {
+            "id": 3,
+            "type": "image-choice",
+            "prompt": "Pilih gambar yang menunjukkan 'Apple'.",
+            "options": [
+              { "label": "Apple", "image": "/images/apple.png" },
+              { "label": "Banana", "image": "/images/banana.png" },
+              { "label": "Orange", "image": "/images/orange.png" }
+            ],
+            "answer": "Apple"
+          },
+          {
+            "id": 4,
+            "type": "arrange",
+            "prompt": "Susun kata berikut: 'I - school - go - to'",
+            "options": ["I", "go", "to", "school"],
+            "answer": ["I", "go", "to", "school"]
+          },
+          {
+            "id": 5,
+            "type": "multiple-choice",
+            "prompt": "Siapa presiden pertama Indonesia?",
+            "options": ["Soekarno", "Soeharto", "Habibie", "Jokowi"],
+            "answer": "Soekarno"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "unlocked": true,
+        "title": "Level 3: Kerajaan Tarumanegara",
+        "description": "Mengenal peninggalan kerajaan Tarumanegara.",
+        "questions": [
+          {
+            "id": 1,
+            "type": "multiple-choice",
+            "prompt": "Apa warna bendera Indonesia?",
+            "options": ["Merah Putih", "Merah Kuning", "Putih Biru", "Hijau Putih"],
+            "answer": "Merah Putih"
+          },
+          {
+            "id": 2,
+            "type": "input",
+            "prompt": "Tuliskan bahasa Inggris dari 'Kucing'.",
+            "answer": "cat"
+          },
+          {
+            "id": 3,
+            "type": "image-choice",
+            "prompt": "Pilih gambar yang menunjukkan 'Bird'.",
+            "options": [
+              { "label": "Dog", "image": "/images/dog.png" },
+              { "label": "Cat", "image": "/images/cat.png" },
+              { "label": "Bird", "image": "/images/bird.png" }
+            ],
+            "answer": "Bird"
+          },
+          {
+            "id": 4,
+            "type": "arrange",
+            "prompt": "Susun kata berikut: 'Am - I - student - a'",
+            "options": ["I", "am", "a", "student"],
+            "answer": ["I", "am", "a", "student"]
+          },
+          {
+            "id": 5,
+            "type": "multiple-choice",
+            "prompt": "Apa ibu kota Jawa Barat?",
+            "options": ["Jakarta", "Bandung", "Bogor", "Depok"],
+            "answer": "Bandung"
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "unlocked": false,
+        "title": "Level 4: Kerajaan Sriwijaya",
+        "description": "Mengetahui pusat perdagangan maritim di Asia Tenggara.",
+        "questions": [
+          {
+            "id": 1,
+            "type": "multiple-choice",
+            "prompt": "Siapa pahlawan nasional yang dikenal dengan sebutan 'Bapak Proklamasi'?",
+            "options": ["Soekarno", "Hatta", "Sudirman", "Diponegoro"],
+            "answer": "Soekarno"
+          },
+          {
+            "id": 2,
+            "type": "input",
+            "prompt": "Tuliskan bahasa Indonesia dari 'House'.",
+            "answer": "rumah"
+          },
+          {
+            "id": 3,
+            "type": "image-choice",
+            "prompt": "Pilih gambar yang menunjukkan 'Banana'.",
+            "options": [
+              { "label": "Apple", "image": "/images/apple.png" },
+              { "label": "Banana", "image": "/images/banana.png" },
+              { "label": "Orange", "image": "/images/orange.png" }
+            ],
+            "answer": "Banana"
+          },
+          {
+            "id": 4,
+            "type": "arrange",
+            "prompt": "Susun kata berikut: 'Reading - book - I - a - am'",
+            "options": ["I", "am", "reading", "a", "book"],
+            "answer": ["I", "am", "reading", "a", "book"]
+          },
+          {
+            "id": 5,
+            "type": "multiple-choice",
+            "prompt": "Apa hasil bumi utama di Indonesia?",
+            "options": ["Minyak", "Padi", "Emas", "Ikan"],
+            "answer": "Padi"
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "unlocked": false,
+        "title": "Level 5: Kerajaan Majapahit",
+        "description": "Mengenal kejayaan Majapahit di Nusantara.",
+        "questions": [
+          {
+            "id": 1,
+            "type": "multiple-choice",
+            "prompt": "Siapa Gajah Mada?",
+            "options": ["Patih Majapahit", "Raja Sriwijaya", "Raja Kutai", "Pahlawan Aceh"],
+            "answer": "Patih Majapahit"
+          },
+          {
+            "id": 2,
+            "type": "input",
+            "prompt": "Tuliskan bahasa Inggris dari 'Sekolah'.",
+            "answer": "school"
+          },
+          {
+            "id": 3,
+            "type": "image-choice",
+            "prompt": "Pilih gambar yang menunjukkan 'Orange'.",
+            "options": [
+              { "label": "Apple", "image": "/images/apple.png" },
+              { "label": "Banana", "image": "/images/banana.png" },
+              { "label": "Orange", "image": "/images/orange.png" }
+            ],
+            "answer": "Orange"
+          },
+          {
+            "id": 4,
+            "type": "arrange",
+            "prompt": "Susun kata berikut: 'History - learn - we - today'",
+            "options": ["We", "learn", "history", "today"],
+            "answer": ["We", "learn", "history", "today"]
+          },
+          {
+            "id": 5,
+            "type": "multiple-choice",
+            "prompt": "Siapa raja terkenal Majapahit?",
+            "options": ["Hayam Wuruk", "Airlangga", "Ken Arok", "Sudirman"],
+            "answer": "Hayam Wuruk"
+          }
+        ]
+      }
+    ]
+  }
+]
