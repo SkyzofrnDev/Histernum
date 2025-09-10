@@ -1,18 +1,19 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { Message } from "../Index";
 import { motion, AnimatePresence } from "framer-motion";
 import PopUp from "../PopUp/PopUp";
 
 const BTLevel = ({
-  level = false,              
-  showMessageEnabled = true,
-  showPopUpEnabled = false ,
+  level = false,
+  showMessageEnabled = false,
+  showPopUpEnabled = false,
+  isOpen = false, 
+  onToggle = () => {}, 
   titlelevel,
   desclevel,
   lesson,
 }) => {
   const [showMessage, setShowMessage] = useState(showMessageEnabled);
-  const [showPopUp, setShowPopUp] = useState(false);
 
   return (
     <div className="flex flex-col items-center justify-center relative">
@@ -37,7 +38,7 @@ const BTLevel = ({
       {/* BUTTON */}
       <button
         onClick={() => {
-          if (showPopUpEnabled) setShowPopUp((prev) => !prev);
+          if (showPopUpEnabled) onToggle(); // pakai props
           if (showMessageEnabled) setShowMessage((prev) => !prev);
         }}
         className={`relative inline-flex items-center justify-center w-[70px] h-[65px] rounded-full ${
@@ -90,10 +91,11 @@ const BTLevel = ({
         </svg>
       </button>
 
+      {/* POPUP */}
       {showPopUpEnabled && (
-        <div className="absolute top-24 -left-10 popup-ket w-96 z-50">
+        <div className="absolute top-24 -left-10 popup-ket w-96 z-[1000]">
           <AnimatePresence>
-            {showPopUp && (
+            {isOpen && ( // pakai props
               <motion.div
                 key="popup"
                 initial={{ scaleY: 1, opacity: 0, originY: 0 }}
@@ -101,11 +103,7 @@ const BTLevel = ({
                 exit={{ scaleY: 1, opacity: 0, originY: 2 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
               >
-                <PopUp
-                  desc={desclevel}
-                  title={titlelevel}
-                  to={lesson}
-                />
+                <PopUp desc={desclevel} title={titlelevel} to={lesson} />
               </motion.div>
             )}
           </AnimatePresence>

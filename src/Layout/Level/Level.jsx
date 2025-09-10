@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import BTLevel from "../../Components/Button/BTLevel";
 import dataLevel from "../../Data/Level.json";
 
 const Level = () => {
+  const [openPopupId, setOpenPopupId] = useState(null); // <-- pindah ke dalam
+
   return (
     <div className="pt-10 px-20 flex flex-col min-h-[1000vh] items-center w-full">
       {dataLevel.map((section) => (
@@ -68,6 +70,10 @@ const Level = () => {
                     level={item.unlocked}
                     showMessageEnabled={isLastUnlocked}
                     showPopUpEnabled={true}
+                    isOpen={openPopupId === item.id} // hanya terbuka jika id sama
+                    onToggle={() =>
+                      setOpenPopupId(openPopupId === item.id ? null : item.id)
+                    }
                     titlelevel={item.title}
                     desclevel={item.description}
                     lesson={`lesson/${item.id}`}
