@@ -57,7 +57,7 @@ const BTLevel = ({
       {/* BUTTON */}
       <button
         onClick={() => {
-          if (showPopUpEnabled) onToggle(); // pakai props
+          if (showPopUpEnabled) onToggle(); 
           if (showMessageEnabled) setShowMessage((prev) => !prev);
         }}
         className={`relative inline-flex items-center justify-center w-[70px] h-[65px] rounded-full ${
