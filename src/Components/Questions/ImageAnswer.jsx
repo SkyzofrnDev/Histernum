@@ -1,0 +1,53 @@
+import React, { useState } from "react";
+
+const ImageAnswer = () => {
+  const [isSelected, setSelected] = useState(null);
+  const answer = ["RA. Kartini", "RA. Kartu Remi", "RA. Kartina", "RA. Kartun"];
+  const baseStyle =
+    "font-semibold flex items-center  px-5 text-center gap-5 overflow-hidden shadow-[0_4px_0_#37464f] active:shadow-[0_1px_0_#37464f] active:translate-y-[4px] duration-100 transition-all h-fit p-2 rounded-2xl border-2 cursor-pointer";
+
+  return (
+    <div className="w-2/4 justify-between flex flex-col">
+      <p className="font-bold text-3xl">Pilihlah jawaban yang benar!</p>
+      <div className="flex mt-10 gap-10">
+        <img
+          src="https://tse1.mm.bing.net/th/id/OIP.WCEbpcXXrvv6TghHNa5koAHaHa?pid=Api&P=0&h=180"
+          className="rounded-xl w-52 aspect-square object-cover"
+          alt="image-question"
+          loading="lazy"
+        />
+        <p className="font-medium text-xl">
+          Tokoh ini adalah tokoh yang menginspirasi kaum wanita, karena dia
+          memperjuangkan hak-hak wanita. Siapakah tokoh ini?
+        </p>
+      </div>
+
+      <div className="grid grid-cols-2 gap-5 mt-10 w-full">
+        {answer.map((key, index) => (
+          <div
+            key={index}
+            onClick={() => setSelected(index)}
+            className={`${baseStyle} ${
+              isSelected === index
+                ? "bg-[#202f36] border-[#3f85a7] text-[#1899d6]"
+                : "text-[#52656d] border-[#37464f] hover:bg-[#202f36]"
+            }`}
+          >
+            <div
+              className={`border-2 px-3 py-1 rounded-md ${
+                isSelected === index
+                  ? "border-[#3f85a7] text-[#1899d6]"
+                  : "border-[#37464f]"
+              }`}
+            >
+              <p>{index + 1}</p>
+            </div>
+            <p className="text-2xl">{key}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default ImageAnswer;

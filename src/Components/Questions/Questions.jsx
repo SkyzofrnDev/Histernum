@@ -6,6 +6,8 @@ import ArrangeQuestion from "./Arrange";
 import BTAnswer from "../Button/BTAnswer";
 import { Link } from "react-router-dom";
 import ProgressBar from "progressbar.js";
+import Arrange from "./Arrange";
+import ImageAnswer from "./ImageAnswer";
 
 const Questions = () => {
   const containerRef = useRef(null);
@@ -64,8 +66,8 @@ const Questions = () => {
           <p className="mt-1">5</p>
         </div>
       </div>
-      <div className="flex items-baseline justify-center">
-        <MultipleChoice />
+      <div className="flex items-baseline justify-center text-white">
+        <ImageAnswer />
       </div>
       <div className="border-t-2 border-[#37464f] py-10 ">
         <div className="flex justify-end px-20">
