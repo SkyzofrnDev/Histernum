@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import ProgressBar from "progressbar.js";
 import Arrange from "./Arrange";
 import ImageAnswer from "./ImageAnswer";
+import Input from "./Input";
 
 const Questions = () => {
   const containerRef = useRef(null);
@@ -67,7 +68,7 @@ const Questions = () => {
         </div>
       </div>
       <div className="flex items-baseline justify-center text-white">
-        <ImageAnswer />
+        <ImageChoice />
       </div>
       <div className="border-t-2 border-[#37464f] py-10 ">
         <div className="flex justify-end px-20">
