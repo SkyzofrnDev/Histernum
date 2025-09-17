@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const Input = () => {
-  const [isSelected, setSelected] = useState(null); // default mulai dari index 0
-  const answer = ["RA. Kartini", "RA. Kartu Remi", "RA. Kartina", "RA. Kartun"];
+const Input = ({ prompt, options }) => {
+  const [isSelected, setSelected] = useState(null);
   const containerRef = useRef(null);
 
   const baseStyle =
     "font-semibold flex items-center px-5 text-center gap-5 overflow-hidden shadow-[0_4px_0_#37464f] active:shadow-[0_1px_0_#37464f] active:translate-y-[4px] duration-100 transition-all h-fit p-2 rounded-2xl border-2 cursor-pointer";
 
-  // biar div bisa dapet fokus keyboard
   useEffect(() => {
     if (containerRef.current) {
       containerRef.current.focus();
@@ -17,16 +15,14 @@ const Input = () => {
 
   const handleKeyDown = (e) => {
     if (e.key === "ArrowDown") {
-      setSelected((prev) => (prev + 1) % answer.length);
+      setSelected((prev) => (prev + 1) % options.length);
     }
     if (e.key === "ArrowUp") {
-      setSelected((prev) => (prev - 1 + answer.length) % answer.length);
-    }
-    if (e.key === "Enter") {
+      setSelected((prev) => (prev - 1 + options.length) % options.length);
     }
     if (/^[1-9]$/.test(e.key)) {
       const num = parseInt(e.key, 10) - 1;
-      if (num < answer.length) {
+      if (num < options.length) {
         setSelected(num);
       }
     }
@@ -35,18 +31,18 @@ const Input = () => {
   return (
     <div
       ref={containerRef}
-      tabIndex={0} // Wajib biar div bisa fokus
+      tabIndex={0}
       onKeyDown={handleKeyDown}
       className="w-2/3 outline-none"
     >
       <p className="font-bold text-3xl">Lengkapi Pernyataan Berikut</p>
       <div className="flex px-5 py-3 border-2 border-[#37464f] rounded-2xl w-fit mt-14 font-semibold">
-        Siapa tokoh emansipasi wanita Indonesia?
+        {prompt}
       </div>
       <div className="grid grid-cols-2 gap-5 mt-10 w-full">
-        {answer.map((key, index) => (
+        {options.map((item, index) => (
           <div
-            key={index}
+            key={item.id}
             onClick={() => setSelected(index)}
             className={`${baseStyle} ${
               isSelected === index
@@ -63,7 +59,7 @@ const Input = () => {
             >
               <p>{index + 1}</p>
             </div>
-            <p className="text-2xl">{key}</p>
+            <p className="text-2xl">{item.ans}</p>
           </div>
         ))}
       </div>

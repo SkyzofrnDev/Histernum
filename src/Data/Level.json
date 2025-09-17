@@ -12,27 +12,40 @@
         "questions": [
           {
             "id": 1,
-            "type": "multiple-choice",
-            "prompt": "Apa bahasa Inggris dari 'buku'?",
-            "options": ["Book", "Table", "Chair", "Pen"],
-            "answer": "Book"
+            "type": "image-choice",
+            "prompt": "Manakah Tokoh yang mendukung pemberontakan G30SPKI",
+            "options": [
+              { "id": "op1", "src": "dnaidit.png" },
+              { "id": "op2", "src": "dirga.png" },
+              { "id": "op3", "src": "eza.png" },
+              { "id": "op4", "src": "sukarno.png" }
+            ],
+            "answer": "op1"
           },
           {
             "id": 2,
             "type": "input",
             "prompt": "Tuliskan bahasa Indonesia dari 'Sun'.",
-            "answer": "matahari"
+            "options": [
+              { "id": "op1", "ans": "RA. Kartini" },
+              { "id": "op2", "ans": "RA. Kartun" },
+              { "id": "op3", "ans": "eza" },
+              { "id": "op4", "ans": "sukarno" }
+            ],
+            "ans":"op1"
           },
           {
             "id": 3,
-            "type": "image-choice",
-            "prompt": "Pilih gambar yang menunjukkan 'Dog'.",
+            "type": "image-answer",
+            "prompt": "Siapakah Tokoh ini.",
+            "src":"dnaidit.png",
             "options": [
-              { "label": "Dog", "image": "/images/dog.png" },
-              { "label": "Cat", "image": "/images/cat.png" },
-              { "label": "Bird", "image": "/images/bird.png" }
+              { "id": "op1", "ans": "RA. Kartini" },
+              { "id": "op2", "ans": "RA. Kartun" },
+              { "id": "op3", "ans": "eza" },
+              { "id": "op4", "ans": "sukarno" }
             ],
-            "answer": "Dog"
+            "answer": "op4"
           },
           {
             "id": 4,
@@ -40,13 +53,6 @@
             "prompt": "Susun kata berikut menjadi kalimat yang benar: 'This - a - pen - is'",
             "options": ["This", "is", "a", "pen"],
             "answer": ["This", "is", "a", "pen"]
-          },
-          {
-            "id": 5,
-            "type": "multiple-choice",
-            "prompt": "Apa bahasa Indonesia dari 'Blue'?",
-            "options": ["Merah", "Kuning", "Biru", "Hijau"],
-            "answer": "Biru"
           }
         ]
       },
@@ -106,7 +112,12 @@
             "id": 1,
             "type": "multiple-choice",
             "prompt": "Apa warna bendera Indonesia?",
-            "options": ["Merah Putih", "Merah Kuning", "Putih Biru", "Hijau Putih"],
+            "options": [
+              "Merah Putih",
+              "Merah Kuning",
+              "Putih Biru",
+              "Hijau Putih"
+            ],
             "answer": "Merah Putih"
           },
           {
@@ -198,7 +209,12 @@
             "id": 1,
             "type": "multiple-choice",
             "prompt": "Siapa Gajah Mada?",
-            "options": ["Patih Majapahit", "Raja Sriwijaya", "Raja Kutai", "Pahlawan Aceh"],
+            "options": [
+              "Patih Majapahit",
+              "Raja Sriwijaya",
+              "Raja Kutai",
+              "Pahlawan Aceh"
+            ],
             "answer": "Patih Majapahit"
           },
           {

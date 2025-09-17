@@ -53,7 +53,7 @@ const Arrange = () => {
               >
                 <div
                   className={`border-2 px-3 py-1 rounded-md ${
-                    isSelected ? "border-[#3f85a7] text-[#1899d6] shadow-[0_4px_0_#3f85a7] active:shadow-[0_1px_0_#3f85a7]" : "border-[#37464f]"
+                    isSelected ? "border-[#3f85a7] text-[#1899d6] " : "border-[#37464f]"
                   }`}
                 >
                   <p>{index + 1}</p>

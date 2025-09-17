@@ -5,17 +5,15 @@ import ArrangeQuestion from "./Arrange";
 import BTAnswer from "../Button/BTAnswer";
 import { Link } from "react-router-dom";
 import ProgressBar from "progressbar.js";
-import Arrange from "./Arrange";
 import ImageAnswer from "./ImageAnswer";
-import Input from "./Input";
 
 const Questions = () => {
   const containerRef = useRef(null);
-  const barRef = useRef(null); 
-  const [progress, setProgress] = useState(0.50); // 👉 variabel progress (0.0 - 1.0)
+  const barRef = useRef(null);
+  const [progress, setProgress] = useState(0.6);
+  const [questionType, setQuestionType] = useState("arrange");
 
   useEffect(() => {
-    // simpan instance ke ref
     barRef.current = new ProgressBar.Line(containerRef.current, {
       strokeWidth: 2,
       easing: "easeInOut",
@@ -45,6 +43,22 @@ const Questions = () => {
     }
   }, [progress]);
 
+  // 👉 fungsi render soal sesuai jenis
+  const renderQuestion = () => {
+    switch (questionType) {
+      case "input":
+        return <InputQuestion />;
+      case "image":
+        return <ImageChoice />;
+      case "imageA":
+        return <ImageAnswer />;
+      case "arrange":
+        return <ArrangeQuestion />;
+      default:
+        return <p className="text-white">Tipe soal tidak dikenali</p>;
+    }
+  };
+
   return (
     <div className="w-full select-none h-screen flex flex-col bg-[#131f24] py-5 justify-between">
       <div className="flex items-center justify-center gap-10 text-[#ed4140] font-semibold text-2xl px-36 w-full py-10">
@@ -55,7 +69,10 @@ const Questions = () => {
             loading="lazy"
           />
         </Link>
-        <div ref={containerRef} className="w-1/2 h-4 rounded-full overflow-hidden" />
+        <div
+          ref={containerRef}
+          className="w-1/2 h-4 rounded-full overflow-hidden"
+        />
         <div className="flex items-center">
           <img
             src="/Icons/heart.svg"
@@ -66,10 +83,13 @@ const Questions = () => {
           <p className="mt-1">5</p>
         </div>
       </div>
+
+      {/* 👇 Bagian soal */}
       <div className="flex items-baseline justify-center text-white">
-        <Arrange />
+        {renderQuestion()}
       </div>
-      <div className="border-t-2 border-[#37464f] py-10 ">
+
+      <div className="border-t-2 border-[#37464f] py-10">
         <div className="flex justify-end px-20">
           <BTAnswer />
         </div>
