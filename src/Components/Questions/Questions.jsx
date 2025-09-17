@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import MultipleChoice from "./MultipleChoice";
 import InputQuestion from "./Input";
 import ImageChoice from "./ImageChoice";
 import ArrangeQuestion from "./Arrange";
@@ -68,7 +67,7 @@ const Questions = () => {
         </div>
       </div>
       <div className="flex items-baseline justify-center text-white">
-        <MultipleChoice />
+        <Arrange />
       </div>
       <div className="border-t-2 border-[#37464f] py-10 ">
         <div className="flex justify-end px-20">
