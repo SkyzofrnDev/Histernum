@@ -29,14 +29,14 @@ const ImageAnswer = () => {
             onClick={() => setSelected(index)}
             className={`${baseStyle} ${
               isSelected === index
-                ? "bg-[#202f36] border-[#3f85a7] text-[#1899d6]"
+                ? "bg-[#202f36] border-[#3f85a7] text-[#1899d6] shadow-[0_4px_0_#3f85a7] active:shadow-[0_1px_0_#3f85a7]"
                 : "text-[#52656d] border-[#37464f] hover:bg-[#202f36]"
             }`}
           >
             <div
               className={`border-2 px-3 py-1 rounded-md ${
                 isSelected === index
-                  ? "border-[#3f85a7] text-[#1899d6]"
+                  ? "border-[#3f85a7] text-[#1899d6] shadow-[0_4px_0_#3f85a7] active:shadow-[0_1px_0_#3f85a7]"
                   : "border-[#37464f]"
               }`}
             >

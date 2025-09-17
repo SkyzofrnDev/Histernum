@@ -2,7 +2,9 @@ import React from 'react'
 
 const MultipleChoice = () => {
   return (
-    <div>MultipleChoice</div>
+    <div>
+       <p className="font-bold text-3xl">Lengkapi Pernyataan Berikut</p>
+    </div>
   )
 }
 
