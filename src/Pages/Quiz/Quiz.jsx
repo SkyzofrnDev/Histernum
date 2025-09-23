@@ -1,8 +1,11 @@
 import React from 'react'
+import { Questions } from '../../Components/Index'
 
 const Quiz = () => {
   return (
-    <div>Quiz</div>
+    <div>
+      <Questions/>
+    </div>
   )
 }
 

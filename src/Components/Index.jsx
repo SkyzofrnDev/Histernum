@@ -7,4 +7,6 @@ export { default as ImageChoice } from "./Questions/ImageChoice";
 export { default as Input } from "./Questions/Input";
 export { default as Message } from "./Animate/Message";
 export { default as PopUp } from "./PopUp/PopUp";
+export { default as Questions } from "./Questions/Questions";
+export { default as BTBackToHome } from "./Button/BTBackToHome";
 

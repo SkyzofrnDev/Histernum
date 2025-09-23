@@ -5,13 +5,14 @@ import {
   Lesson,
   Login,
   NotFound,
-  Quiz,
   Register,
   Result,
 } from "./Pages/Index";
 import "./App.css";
 import { Level } from "./Layout/Index";
 import Test from "./Pages/Test/Test";
+import { Questions } from "./Components/Index";
+import ScoreGame from "./Layout/ScoreGame/ScoreGame";
 
 const App = () => {
   return (
@@ -23,9 +24,11 @@ const App = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
       <Route path="/lesson/:id" element={<Lesson />} />
-      <Route path="/quiz/:id" element={<Quiz />} />
+      <Route path="/quiz/:id" element={<Questions />} />
       <Route path="/result" element={<Result />} />
       <Route path="/test" element={<Test />} />
+      <Route path="/score" element={<ScoreGame />} />
+
     </Routes>
   );
 };

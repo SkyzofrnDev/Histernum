@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 
-const ImageChoice = ({ question }) => {
+const ImageChoice = ({ question, answers = [], correctAnswer, onAnswer }) => {
   const [isSelected, setSelected] = useState(null);
   const containerRef = useRef(null);
 
@@ -17,22 +17,29 @@ const ImageChoice = ({ question }) => {
   const handleKeyDown = (e) => {
     if (e.key === "ArrowRight") {
       setSelected((prev) =>
-        prev === null ? 0 : (prev + 1) % question.options.length
+        prev === null ? 0 : (prev + 1) % answers.length
       );
     }
     if (e.key === "ArrowLeft") {
       setSelected((prev) =>
         prev === null
-          ? question.options.length - 1
-          : (prev - 1 + question.options.length) % question.options.length
+          ? answers.length - 1
+          : (prev - 1 + answers.length) % answers.length
       );
     }
     if (/^[1-9]$/.test(e.key)) {
       const num = parseInt(e.key, 10) - 1;
-      if (num < question.options.length) {
+      if (num < answers.length) {
         setSelected(num);
       }
     }
+  };
+
+  const handleSelect = (index) => {
+    setSelected(index);
+    const selectedAnswer = answers[index]?.ans; // ✅ pakai ans, bukan src
+    console.log("Jawaban dipilih:", selectedAnswer);
+    if (onAnswer) onAnswer(selectedAnswer);
   };
 
   return (
@@ -42,18 +49,20 @@ const ImageChoice = ({ question }) => {
       onKeyDown={handleKeyDown}
       className="min-h-[40vh] flex flex-col justify-between outline-none"
     >
+      {/* pertanyaan */}
       <div>
-        <p className="font-bold text-3xl">{question.prompt}</p>
-        <div className="flex px-5 w-fit mt-9 text-xl">
-          Manakah gambar yang benar?
+        <p className="font-bold text-3xl">Pilih Jawaban yang Benar</p>
+        <div className="flex px-5 py-3 border-2 border-[#37464f] rounded-2xl w-fit mt-14 font-semibold">
+          {question}
         </div>
       </div>
 
+      {/* jawaban */}
       <div className="grid grid-cols-4 gap-5 mt-10 w-full">
-        {question.options.map((opt, index) => (
+        {answers.map((opt, index) => (
           <div
-            key={opt.id}
-            onClick={() => setSelected(index)}
+            key={opt.id || index}
+            onClick={() => handleSelect(index)}
             className={`${baseStyle} ${
               isSelected === index
                 ? "bg-[#202f36] border-[#3f85a7] text-[#1899d6] shadow-[0_4px_0_#3f85a7]"
@@ -72,7 +81,7 @@ const ImageChoice = ({ question }) => {
             <img
               src={opt.src}
               className="aspect-square object-cover rounded-lg w-32 h-32"
-              alt={`Pilihan ${index + 1}`}
+              alt={opt.ans} // ✅ alt pakai jawaban biar kebaca
             />
           </div>
         ))}
