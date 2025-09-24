@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import Heart from "../Heart/Heart";
 
 const dataNav = [
   {
@@ -25,8 +26,15 @@ const Navigation = () => {
       <Link to={"/"}>
         <p className="FH text-3xl text-[#58cc02] pb-10 select-none">historium</p>
       </Link>
+      
+      {/* Heart Display */}
+      <div className="mb-6">
+        <Heart />
+      </div>
+      
       {dataNav.map((item, i) => (
         <NavLink
+          key={i}
           to={item.to}
           end
           className={({ isActive }) =>

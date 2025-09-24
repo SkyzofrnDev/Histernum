@@ -7,6 +7,9 @@ import BTAnswer from "../Button/BTAnswer";
 import { Link, useNavigate } from "react-router-dom";
 import ProgressBar from "progressbar.js";
 import ImageAnswer from "./ImageAnswer";
+import { heartSystem } from "../../Utils/heartSystem";
+import { soundSystem } from "../../Utils/soundSystem";
+import Heart from "../Heart/Heart";
 
 // 🔹 fungsi shuffle array biar random
 const shuffleArray = (arr) => {
@@ -25,6 +28,8 @@ const Questions = () => {
   const [questionOrder, setQuestionOrder] = useState([]);
   const [isChecking, setIsChecking] = useState(false); // 🔹 kontrol tombol
   const [correctCount, setCorrectCount] = useState(0); // 🔹 hitung jawaban benar
+  const [totalQuestions, setTotalQuestions] = useState(0); // 🔹 total soal
+  const [hearts, setHearts] = useState(heartSystem.getHearts()); // 🔹 nyawa player
 
   // 🔹 Semua soal disimpan di object
   const dummyData = {
@@ -81,9 +86,21 @@ const Questions = () => {
 
   // 🔹 Acak urutan soal sekali di awal
   useEffect(() => {
+    // Check if player has hearts
+    if (!heartSystem.canPlay()) {
+      alert("Hearts habis! Tunggu 20 menit untuk regeneration atau beli hearts.");
+      navigate("/");
+      return;
+    }
+
+    // Preload sounds
+    soundSystem.preloadSounds();
+
     const keys = Object.keys(dummyData); // ["input","image","imageA","arrange"]
     setQuestionOrder(shuffleArray(keys));
-  }, []);
+    setTotalQuestions(keys.length);
+    setHearts(heartSystem.getHearts());
+  }, [navigate]);
 
   // 🔹 Setup progress bar
   useEffect(() => {
@@ -115,7 +132,7 @@ const Questions = () => {
   // 🔹 Render soal sesuai tipe
   const renderQuestion = () => {
     if (currentIndex >= questionOrder.length) {
-      return <p className="text-white text-2xl font-bold">🎉 Quiz selesai!</p>;
+      return
     }
 
     const type = questionOrder[currentIndex];
@@ -155,7 +172,8 @@ const Questions = () => {
             right={data.right}
             correctPairs={data.correctPairs || {}}
             onComplete={() => {
-              setCorrectCount((prev) => prev + 1); // ✅ anggap selalu benar
+              setCorrectCount((prev) => prev + 1); // arrange selalu benar jika selesai
+              soundSystem.playCorrect(); // Play correct sound
               setCurrentIndex((prev) => prev + 1);
               setProgress((prev) => prev + 1 / questionOrder.length);
             }}
@@ -183,7 +201,8 @@ const Questions = () => {
 
     if (selectedAnswer === correct) {
       setResult("benar");
-      setCorrectCount((prev) => prev + 1); // ✅ hitung jawaban benar
+      setCorrectCount((prev) => prev + 1);
+      soundSystem.playCorrect(); // Play correct sound
       setTimeout(() => {
         setSelectedAnswer(null);
         setResult(null);
@@ -193,31 +212,47 @@ const Questions = () => {
       }, 800);
     } else {
       setResult("salah");
+      soundSystem.playWrong(); // Play wrong sound
+      // Gunakan heart ketika salah
+      const heartUsed = heartSystem.useHeart();
+      setHearts(heartSystem.getHearts());
+      
       setTimeout(() => {
-        setQuestionOrder((prev) => {
-          const newOrder = [...prev];
-          newOrder.push(newOrder[currentIndex]);
-          return newOrder;
-        });
-        setSelectedAnswer(null);
-        setResult(null);
-        setCurrentIndex((prev) => prev + 1);
-        setIsChecking(false);
+        if (heartUsed) {
+          // Masih ada heart, lanjut ke soal berikutnya
+          setQuestionOrder((prev) => {
+            const newOrder = [...prev];
+            newOrder.push(newOrder[currentIndex]);
+            return newOrder;
+          });
+          setSelectedAnswer(null);
+          setResult(null);
+          setCurrentIndex((prev) => prev + 1);
+          setIsChecking(false);
+        } else {
+          // Habis hearts, redirect ke home
+          alert("Hearts habis! Kembali ke home untuk menunggu regeneration.");
+          navigate("/");
+        }
       }, 800);
     }
   };
 
-  // 🔹 Kalau semua soal sudah habis → pindah ke ScoreGame
+  // 🔹 Navigate ke score ketika quiz selesai
   useEffect(() => {
     if (currentIndex >= questionOrder.length && questionOrder.length > 0) {
-      const totalSoal = questionOrder.length;
-      const nilai = Math.round((correctCount / totalSoal) * 100);
-
-      navigate("/score", {
-        state: { correctCount, totalSoal, nilai },
-      });
+      const nilai = Math.round((correctCount / totalQuestions) * 100);
+      setTimeout(() => {
+        navigate("/score", {
+          state: {
+            correctCount,
+            totalSoal: totalQuestions,
+            nilai,
+          },
+        });
+      }, 2000); // delay 2 detik untuk melihat "Quiz selesai!"
     }
-  }, [currentIndex, questionOrder, correctCount, navigate]);
+  }, [currentIndex, questionOrder.length, correctCount, totalQuestions, navigate]);
 
   // 🔹 Enter key sebagai shortcut "Periksa Jawaban"
   useEffect(() => {
@@ -233,7 +268,7 @@ const Questions = () => {
   }, [selectedAnswer, currentIndex, questionOrder]);
 
   return (
-    <div className="overflow-hidden w-full select-none h-screen flex flex-col bg-[#131f24] py-5 justify-between">
+    <div className="overflow w-full select-none h-screen flex flex-col bg-[#131f24] py-5 justify-between">
       {/* 🔹 Header progress */}
       <div className="flex items-center justify-center gap-10 text-[#ed4140] font-semibold text-2xl px-36 w-full py-10">
         <Link to={"/"}>
@@ -247,15 +282,7 @@ const Questions = () => {
           ref={containerRef}
           className="w-1/2 h-4 rounded-full overflow-hidden"
         />
-        <div className="flex items-center">
-          <img
-            src="/Icons/heart.svg"
-            alt="icon-heart"
-            loading="lazy"
-            className="w-10"
-          />
-          <p className="mt-1">5</p>
-        </div>
+        <Heart />
       </div>
 
       {/* 🔹 Bagian soal dengan animasi */}

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CountUp from "../../Components/CountText/CountText";
 import { BTBackToHome } from "../../Components/Index";
 import { useLocation, useNavigate } from "react-router-dom";
+import { soundSystem } from "../../Utils/soundSystem";
 
 const ScoreGame = () => {
   const location = useLocation();
@@ -17,6 +18,14 @@ const ScoreGame = () => {
   }
 
   const [startAccuracy, setStartAccuracy] = useState(false);
+
+  // Play level complete sound when component mounts
+  useEffect(() => {
+    // Preload sounds and play level complete sound
+    soundSystem.preloadSounds().then(() => {
+      soundSystem.playLevelComplete();
+    });
+  }, []);
 
   return (
     <div className="bg-[#131f24] text-white flex justify-center items-center h-screen flex-col">

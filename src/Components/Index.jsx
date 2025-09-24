@@ -9,4 +9,5 @@ export { default as Message } from "./Animate/Message";
 export { default as PopUp } from "./PopUp/PopUp";
 export { default as Questions } from "./Questions/Questions";
 export { default as BTBackToHome } from "./Button/BTBackToHome";
+export { default as Heart } from "./Heart/Heart";
 

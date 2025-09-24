@@ -78,7 +78,7 @@ const Level = () => {
                     }
                     titlelevel={item.title}
                     desclevel={item.description}
-                    lesson={`lesson/${item.id}`}
+                    lesson={`quiz/${item.id}`}
                   />
                 </div>
               );
