@@ -1,6 +1,7 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import CardLearn from "../../Components/Card/CardLearn";
 import { useMultipleYouTubeVideos } from "../../Hooks/useYouTubeVideo";
+import FadeTransition from "../../Components/Transition/FadeTransition";
 
 // 🔹 Data video - cukup masukkan YouTube URL atau ID
 const videoData = [
@@ -19,6 +20,8 @@ const videoData = [
 ];
 
 const Lesson = () => {
+  const [isVisible, setIsVisible] = useState(false);
+  
   // Memoize YouTube URLs untuk mencegah re-fetch yang tidak perlu
   const youtubeUrls = useMemo(() => 
     videoData.map(video => video.youtubeUrl), 
@@ -26,6 +29,10 @@ const Lesson = () => {
   );
   
   const { videosData, loading, error } = useMultipleYouTubeVideos(youtubeUrls);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   // Show loading only if we don't have any data yet
   if (loading && videosData.length === 0) {
@@ -56,24 +63,27 @@ const Lesson = () => {
         
         if (!videoResult.success || !videoResult.data) {
           return (
-            <div key={originalVideo.id} className="text-red-400 p-4 border border-red-400 rounded-lg">
-              <p>Error loading video: {videoResult.error}</p>
-              <p>URL: {originalVideo.youtubeUrl}</p>
-            </div>
+            <FadeTransition key={originalVideo.id} isVisible={isVisible} duration={1000}>
+              <div className="text-red-400 p-4 border border-red-400 rounded-lg">
+                <p>Error loading video: {videoResult.error}</p>
+                <p>URL: {originalVideo.youtubeUrl}</p>
+              </div>
+            </FadeTransition>
           );
         }
 
         const video = videoResult.data;
         
         return (
-          <CardLearn
-            key={originalVideo.id}
-            title={video.title}
-            description={video.description || `Video dari ${video.channelTitle}`}
-            source={`YouTube: ${video.channelTitle}`}
-            imgSrc={video.thumbnail.high || video.thumbnail.medium || video.thumbnail.default}
-            link={video.url}
-          />
+          <FadeTransition key={originalVideo.id} isVisible={isVisible} duration={1000}>
+            <CardLearn
+              title={video.title}
+              description={video.description || `Video dari ${video.channelTitle}`}
+              source={`YouTube: ${video.channelTitle}`}
+              imgSrc={video.thumbnail.high || video.thumbnail.medium || video.thumbnail.default}
+              link={video.url}
+            />
+          </FadeTransition>
         );
       })}
       

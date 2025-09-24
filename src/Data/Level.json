@@ -29,17 +29,17 @@
               {
                 "id": "op1",
                 "ans": "Bendera Merah Putih",
-                "src": "/Flags/indonesia.png"
+                "src": "/Flags/Indonesia.jpg"
               },
               {
                 "id": "op2",
                 "ans": "Bendera Jepang",
-                "src": "/Flags/japan.png"
+                "src": "/Flags/Japan.webp"
               },
               {
                 "id": "op3",
                 "ans": "Bendera Singapura",
-                "src": "/Flags/singapore.png"
+                "src": "/Flags/Singapute.jpg"
               }
             ],
             "answer": "op1"
@@ -48,7 +48,7 @@
             "id": 3,
             "type": "image-question",
             "prompt": "Siapakah tokoh ini?",
-            "src": "/People/kartini.jpg",
+            "src": "/Kartini.jpep",
             "desc": "Pahlawan emansipasi wanita Indonesia",
             "options": [
               { "id": "op1", "ans": "RA Kartini" },
@@ -108,17 +108,17 @@
               {
                 "id": "op1",
                 "ans": "Bendera Merah Putih",
-                "src": "/Flags/indonesia.png"
+                "src": "/Flags/Indonesia.jpg"
               },
               {
                 "id": "op2",
                 "ans": "Bendera Jepang",
-                "src": "/Flags/japan.png"
+                "src": "/Flags/Japan.webp"
               },
               {
                 "id": "op3",
                 "ans": "Bendera Singapura",
-                "src": "/Flags/singapore.png"
+                "src": "/Flags/Singapute.jpg"
               }
             ],
             "answer": "op1"
@@ -127,7 +127,7 @@
             "id": 3,
             "type": "image-question",
             "prompt": "Siapakah tokoh ini?",
-            "src": "/People/kartini.jpg",
+            "src": "/Kartini.jpeg",
             "desc": "Pahlawan emansipasi wanita Indonesia",
             "options": [
               { "id": "op1", "ans": "RA Kartini" },

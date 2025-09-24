@@ -46,16 +46,16 @@ const Questions = () => {
     image: {
       prompt: "Pilih bendera yang benar untuk Indonesia",
       options: [
-        { id: 1, ans: "Bendera Merah Putih", src: "/Flags/indonesia.png" },
-        { id: 2, ans: "Bendera Jepang", src: "/Flags/japan.png" },
-        { id: 3, ans: "Bendera Singapura", src: "/Flags/singapore.png" },
+        { id: 1, ans: "Bendera Merah Putih", src: "/Flags/Indonesia.jpg" },
+        { id: 2, ans: "Bendera Jepang", src: "/Flags/Japan.webp" },
+        { id: 3, ans: "Bendera Singapura", src: "/Flags/Singapute.jpg" },
       ],
       correctAnswer: "Bendera Merah Putih",
     },
 
     imageA: {
       prompt: "Siapakah tokoh ini?",
-      src: "/People/kartini.jpg",
+      src: "/Kartini.jpeg",
       desc: "Pahlawan emansipasi wanita Indonesia",
       options: [
         { id: 1, ans: "RA Kartini" },

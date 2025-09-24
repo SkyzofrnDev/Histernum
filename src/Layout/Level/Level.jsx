@@ -1,15 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import BTLevel from "../../Components/Button/BTLevel";
 import dataLevel from "../../Data/Level.json";
 import BTMaterial from "../../Components/Button/BTMaterial";
+import FadeTransition from "../../Components/Transition/FadeTransition";
 
 const Level = () => {
   const [openPopupId, setOpenPopupId] = useState(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
 
   return (
     <div className="pt-10 px-20 flex flex-col min-h-[1000vh] items-center w-full">
       {dataLevel.map((section) => (
-        <div key={section.id} className="w-full">
+        <FadeTransition key={section.id} isVisible={isVisible} duration={1000}>
+          <div className="w-full">
           {/* Header */}
           <div className="w-full items-center justify-center flex sticky top-5 pb-20 z-20">
             <div className="p-4 bg-[#58cc02] rounded-2xl w-fit">
@@ -84,7 +91,8 @@ const Level = () => {
               );
             })}
           </div>
-        </div>
+          </div>
+        </FadeTransition>
       ))}
     </div>
   );

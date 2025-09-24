@@ -10,4 +10,6 @@ export { default as PopUp } from "./PopUp/PopUp";
 export { default as Questions } from "./Questions/Questions";
 export { default as BTBackToHome } from "./Button/BTBackToHome";
 export { default as Heart } from "./Heart/Heart";
+export { default as FadeTransition } from "./Transition/FadeTransition";
+export { default as RouteTransition } from "./Transition/RouteTransition";
 
